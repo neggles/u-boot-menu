@@ -18,13 +18,15 @@ menu items for each of <U_BOOT_ALTERNATIVES> are generated
 for the first valid entry among these:
 
 .IP \[bu] 2
-fdt <U_BOOT_FDT_DIR><version>/<U_BOOT_FDT>
+fdt <U_BOOT_FDT_DIR><version>/<U_BOOT_FDT> \- distribution kernel package
 .IP \[bu]
-fdtdir <U_BOOT_FDT_DIR><version>/
-.IP \[bu] 2
+fdt /dtbs/<version>/<U_BOOT_FDT> \- vanilla kernel build
+.IP \[bu]
 fdt /<U_BOOT_FDT>
 .IP \[bu]
 fdt /dtb-<version>
+.IP \[bu]
+fdtdir <U_BOOT_FDT_DIR><version>/
 
 .PP
 Paths without <U_BOOT_FDT_DIR> are considered

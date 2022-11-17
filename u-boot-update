@@ -185,12 +185,18 @@ do
 	if [ -e "${_BOOT_PATH}${U_BOOT_FDT_DIR}${_VERSION}/${U_BOOT_FDT}" ] && [ -n "${U_BOOT_FDT}" ]
 	then
 		_FDT="fdt ${U_BOOT_FDT_DIR}${_VERSION}/${U_BOOT_FDT}"
+	elif [ -f "${_BOOT_PATH}/${U_BOOT_FDT}" ] && [ -n "${U_BOOT_FDT}" ]
+	then
+		_FDT="fdt /${U_BOOT_FDT}"
+	elif [ -e "/boot/dtbs/${_VERSION}/${U_BOOT_FDT}" ] && [ -n "${U_BOOT_FDT}" ]
+	then
+		_FDT="fdt /dtbs/${_VERSION}/${U_BOOT_FDT}"
+	elif [ -f "/boot/dtb-${_VERSION}" ]
+	then
+		_FDT="fdt ${_BOOT_DIRECTORY}/dtb-${_VERSION}"
 	elif [ -d "${_BOOT_PATH}${U_BOOT_FDT_DIR}${_VERSION}/" ]
 	then
 		_FDT="fdtdir ${U_BOOT_FDT_DIR}${_VERSION}/"
-	elif [ -f "${_BOOT_PATH}/${U_BOOT_FDT:-dtb-${_VERSION}}" ] && [ /usr/lib/linux-image- = "${U_BOOT_FDT_DIR}" ]
-	then
-		_FDT="fdt /${U_BOOT_FDT:-dtb-${_VERSION}}"
 	else
 		_FDT=""
 	fi
